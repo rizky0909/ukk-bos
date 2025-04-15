@@ -21,7 +21,7 @@
                
             </div>
             <div class="flex gap-2 ">
-               
+                
                 <a href="{{ route('downloadExcel') }}">
                     <button type="button"
                         class=" items-center font-medium text-blue-600 dark:text-red-500 hover:underline">
@@ -49,11 +49,13 @@
                     </td>
                     <td class="px-6 py-4 space-x-3">
                         <div class="flex gap-5">
+                            <a href="{{route('detailPembelian',$transaction->id)}}">
                             <button data-modal-target="modal-muehe transaction-id"
                                 data-modal-toggle="modal-muehe transaction-id"
                                 class="font-medium text-yellow-300 dark:text-yellow-500 hover:underline">
                                 Lihat
                             </button>
+                        </a>
                             <a href="{{ route('downloadPDF', $transaction->id) }}">
                                 <button type="button"
                                     class="font-medium text-blue-600 dark:text-red-500 hover:underline">
@@ -64,18 +66,7 @@
                     </td>
                 </tr>
 
-                <div id="modal-muehe transaction-id"
-                    class="hidden fixed inset-0 z-50  items-center justify-center bg-transparent bg-opacity-50 backdrop-blur-sm">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg w-full max-w-md shadow-lg p-6 relative">
-                        <button type="button" data-modal-hide="modal-muehe transaction-id"
-                            class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-white">
-                            &times;
-                        </button>
-
-                        <div></div>
-
-                    </div>
-                </div>
+                
             @endforeach
 
         </x-table>

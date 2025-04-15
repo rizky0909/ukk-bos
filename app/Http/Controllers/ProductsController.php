@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+use function Laravel\Prompts\select;
 
 class ProductsController extends Controller
 {
@@ -17,6 +20,14 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
+
+    public function detailPembelian(int $id){
+       $data = Transactions::where('id',$id)->with('detail.product')->first();
+    //    dd($data);
+    //    $data['produk_name'] = Products::where('id',$data->detail->first()->id)->select('name')->get();
+    //    dd($data);
+return view('purchases.detailpembelian',compact('data'));
+    }
     /**
      * Show the form for creating a new resource.
      */

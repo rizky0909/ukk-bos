@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [TransactionsController::class, 'index'])->name('transaction');
     Route::get('/downloadPDF/{id}', [TransactionsController::class, 'downloadPDF'])->name('downloadPDF');
     Route::get('/downloadExcel', [TransactionsController::class, 'downloadExcel'])->name('downloadExcel');
+    Route::get('/detailPembelian/{id}', [ProductsController::class, 'detailPembelian'])->name('detailPembelian');
 
 
     Route::middleware(['admin'])->group(function () {
