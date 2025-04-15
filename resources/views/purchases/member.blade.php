@@ -49,7 +49,7 @@
                         <div>Point</div>
                         <input type="number" id="total_point"
                             class="bg-white border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="total_point" value="{{ $transaction->customer->total_point }}" readonly />
+                            name="total_point" value="{{ $transaction->point }}" readonly />
                         <div class="flex items-center">
                             <input id="use_point" name="use_point" type="checkbox" value="1"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm">

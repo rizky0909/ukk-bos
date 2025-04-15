@@ -34,6 +34,8 @@
                     <td class="px-6 py-4 text-gray-900 dark:text-white">
                         {{ $product->stok }}
                     </td>
+                    @if (Auth::user()->role == 'admin')
+                        
                         <td class="px-6 py-4 space-x-3">
                             <div class="flex gap-5">
                                 <a href="{{ route('productEdit', $product->id) }}"
@@ -54,6 +56,8 @@
                                     </button>
                                 </form>
                             </div>
+                    @endif
+
                         </td>
                 </tr>
 

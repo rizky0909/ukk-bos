@@ -88,7 +88,8 @@ class TransactionsController extends Controller
                     'total_return' => $return,
                     'total_payment' => $request->total_payment_clean,
                     'total_price' => $request->total_price,
-                    'point' => '0'
+                    'point' => '0',
+                    
                 ]);
 
                 $cart = session('cart');
@@ -126,10 +127,12 @@ class TransactionsController extends Controller
                 if (!$customer) {
                     $customer = Customers::create([
                         'no_hp' => $request->no_hp,
-                        'total_point' => $point
+                        'total_point' => $point,
                     ]);
                 } else {
-                    $customer->total_point += $point;
+                    // dd($customer);
+                    $customer->total_point   += $point;
+                    $customer->point_before == $point;
                     $customer->save();
                 }
 
@@ -171,6 +174,10 @@ class TransactionsController extends Controller
     {
         $cart = session('cart');
         $transaction = Transactions::with('detail.product')->findOrFail($id);
+        $tr = Customers::find($transaction['customer_id']);
+        $transaction->point -= $tr->point_before;
+        // dd($transaction);
+        // $transaction['point'] == $transaction['point'] - $transaction['point_before']
         return view('purchases.member', compact('cart', 'transaction'));
     }
 

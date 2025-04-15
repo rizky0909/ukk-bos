@@ -45,13 +45,12 @@
     </style>
 </head>
 <body>
-
     <div class="section">
         <p class="bold">Indo April</p>
         <p>Member Status : Member</p>
-        <p>No. HP : 22222</p>
+        <p>No. HP :{{$transaction->point}}</ </p>
         <p>Bergabung Sejak : 14 April 2025</p>
-        <p>Poin Member : 2000</p>
+        <p>Poin Member : {{$transaction->point}}</p>
     </div>
 
     <table border="0">
@@ -64,6 +63,9 @@
             </tr>
         </thead>
         <tbody>
+            {{-- @foreach ($collection as $item)
+                
+            @endforeach --}}
             <tr>
                 <td>Bibit Toge</td>
                 <td>2</td>
