@@ -10,7 +10,7 @@
                     <div
                         class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex">
                         <!-- Gambar -->
-                        <img src="{{ asset('storage/' . $product->gambar) }}" class="w-1/3 object-cover rounded-l-lg"
+                        <img src="{{ asset('uploads/' . $product->gambar) }}" class="w-1/3 object-cover rounded-l-lg"
                             alt="{{ $product->nama_produk }}">
 
                         <!-- Konten -->

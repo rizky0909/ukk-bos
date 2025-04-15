@@ -23,7 +23,7 @@
                                 {{ $item['product']['harga'] ?? '-' }}
                             </td>
                             <td class="px-6 py-4">
-                                Rp {{ number_format($item['quantity'] * $item['price'], 0, ',', '.') }}
+                                Rp {{ number_format($item['quantity'] * $item['product']['harga'], 0, ',', '.') }}
                             </td>
                         </tr>
                     @endforeach
