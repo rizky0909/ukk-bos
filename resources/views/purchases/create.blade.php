@@ -7,7 +7,6 @@
                     <input type="hidden" name="harga[{{ $product->id }}]" value="{{ $product->harga }}">
                     <input type="hidden" name="nama_produk[{{ $product->id }}]" value="{{ $product->nama_produk }}">
 
-
                     <div
                         class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex">
                         <!-- Gambar -->

@@ -178,7 +178,7 @@ class TransactionsController extends Controller
     {
         $transaction = Transactions::with('detail.product')->findOrFail($id);
         $pdf = Pdf::loadView('export.transaction_pdf', compact('transaction'));
-        return $pdf->download('invoice.pdf');
+        return $pdf->stream('invoice.pdf');
     }
 
     public function downloadExcel()

@@ -1,68 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Bukti Transaksi</title>
+    <title>Struk Pembelian</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            margin: 20px;
+            font-family: DejaVu Sans, sans-serif;
+            font-size: 12px;
+            color: #000;
+            margin: 30px;
         }
 
-        h2 {
-            text-align: center;
+        .section {
             margin-bottom: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th,
-        td {
-            border: 1px solid #000;
-            padding: 8px 10px;
-            text-align: left;
         }
 
         th {
-            background-color: #f2f2f2;
+            background: #eee;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
         }
 
         .footer {
+            text-align: center;
             margin-top: 40px;
-            text-align: right;
-            font-size: 12px;
         }
     </style>
 </head>
-
 <body>
-    <h2>Bukti Transaksi</h2>
-    @foreach ($transaction->detail as $item)
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ $item->product->nama_produk }}</td>
-                    <td>Rp . {{ number_format($item->product->harga) }}</td>
-                </tr>
-            </tbody>
+
+    <div class="section">
+        <p class="bold">Indo April</p>
+        <p>Member Status : Member</p>
+        <p>No. HP : 22222</p>
+        <p>Bergabung Sejak : 14 April 2025</p>
+        <p>Poin Member : 2000</p>
+    </div>
+
+    <table border="0">
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th>QTy</th>
+                <th>Harga</th>
+                <th>Sub Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bibit Toge</td>
+                <td>2</td>
+                <td>Rp. 100.000</td>
+                <td>Rp. 200.000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section" style="margin-top: 20px;">
+        <table border="0">
+            <tr>
+                <td class="bold">Total Harga</td>
+                <td class="right bold">Rp. 200.000</td>
+            </tr>
+            <tr>
+                <td>Poin Digunakan</td>
+                <td class="right">0</td>
+            </tr>
+            <tr>
+                <td class="bold">Harga Setelah Poin</td>
+                <td class="right bold">Rp. 0</td>
+            </tr>
+            <tr>
+                <td class="bold">Total Kembalian</td>
+                <td class="right bold">Rp. 22.222</td>
+            </tr>
         </table>
-    @endforeach
+    </div>
 
     <div class="footer">
-        Dicetak pada: {{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}
+        <p>2025-04-14T22:22:30.000000Z | Petugas</p>
+        <p class="bold">Terima kasih atas pembelian Anda!</p>
     </div>
-</body>
 
+</body>
 </html>
