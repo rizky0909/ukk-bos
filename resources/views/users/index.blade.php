@@ -12,10 +12,7 @@
             </a>
         </div>
         <br>
-        <form method="GET" >
-            <input type="text" name="search" placeholder="Cari..." value="" class="mb-4 px-4 py-2 border rounded w-1/3">
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Cari</button>
-        </form>
+       
         <x-table :headers="['Nama', 'Email', 'Role', 'Action']">
             @foreach ($users as $user)
                 <tr

@@ -3,6 +3,8 @@
     <x-card>
 
         <div class="flex justify-between items-center">
+            @if (Auth::user()->role == 'admin')
+                
             <span class="text-4xl">Product</span>
                 <a href="{{ route('productCreate') }}">
                     <button type="button"
@@ -10,6 +12,8 @@
                         Tambah Produk
                     </button>
                 </a>
+            @endif
+
         </div>
         <br>
         
@@ -18,7 +22,7 @@
                 <tr
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="p-4">
-                        <img src="{{ asset('storage/' . $product->gambar) }}" class="w-16 md:w-32 max-w-full max-h-full"
+                        <img src="{{ asset( '/uploads/' . $product->gambar) }}" class="w-16 md:w-32 max-w-full max-h-full"
                             alt="{{ $product->nama_produk }}">
                     </td>
                     <td class="px-6 py-4 text-gray-900 dark:text-white">
@@ -84,7 +88,7 @@
             @endforeach
         </x-table>
         <div class="mt-4">
-            <div>{{ $products->links() }}</div>
+            {{-- <div>{{ $products->links() }}</div> --}}
         </div>
 
     </x-card>

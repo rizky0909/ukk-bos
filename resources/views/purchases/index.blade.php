@@ -18,23 +18,10 @@
         <br>
         <div class="flex justify-between">
             <div>
-                <form method="GET" class="flex gap-10">
-                    <select id="pagi" name="pagi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="5"{{ request('pagi') == '5' ? 'selected' : '' }}>5</option>
-                        <option value="10"{{ request('pagi') == '10' ? 'selected' : '' }}>10</option>
-                        <option value="20"{{ request('pagi') == '20' ? 'selected' : '' }}>20</option>
-                        <option value="30"{{ request('pagi') == '30' ? 'selected' : '' }}>30</option>
-                    </select>
-                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Sort</button>
-                </form>
+               
             </div>
             <div class="flex gap-2 ">
-                <form method="GET">
-                    <input type="text" name="search" placeholder="Cari..." value="{{ request('search') }}"
-                        class="mb-4 px-4 py-2 border rounded ">
-                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Cari</button>
-                </form>
+               
                 <a href="{{ route('downloadExcel') }}">
                     <button type="button"
                         class=" items-center font-medium text-blue-600 dark:text-red-500 hover:underline">

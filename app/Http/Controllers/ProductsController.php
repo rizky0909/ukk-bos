@@ -13,7 +13,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::paginate(1);
+        $products = Products::all();
         return view('products.index', compact('products'));
     }
 
@@ -35,21 +35,26 @@ class ProductsController extends Controller
                 'nama_produk' => 'required|string',
                 'gambar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
                 'harga' => 'required|string',
-                'stok' => 'required|integer'
+                'stok' => 'required|integer',
             ]);
 
+            // dd($request);
+            if ($request->hasFile('gambar')) {
+                $image = $request->file('gambar');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('uploads'), $imageName);
+            }
             $harga = (int) str_replace(['Rp', '.', ','], '', $request->harga);
-            $gambar = $request->file('gambar')->store('images', 'public');
+            // $gambar = $request->file('gambar')->store('images', 'public');
 
             Products::create([
                 'nama_produk' => $request->nama_produk,
-                'gambar' => $gambar,
+                'gambar' => $imageName,
                 'harga' => $harga,
-                'stok' => $request->stok
+                'stok' => $request->stok,
             ]);
 
             return redirect()->route('products')->with('success', 'Berhasil Menambah Barang');
-
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -58,7 +63,6 @@ class ProductsController extends Controller
     public function updateStock(Request $request, $id)
     {
         try {
-
             $product = Products::findOrFail($id);
             $request->validate([
                 'stok' => 'required|integer',
@@ -67,7 +71,6 @@ class ProductsController extends Controller
             $product->stok = $request->stok;
             $product->save();
             return redirect()->route('products')->with('success', 'Berhasil Mengupdate Stok');
-
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -87,7 +90,6 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         try {
-
             $product = Products::findOrFail($id);
             $request->validate([
                 'nama_produk' => 'required|string',
@@ -104,7 +106,6 @@ class ProductsController extends Controller
             $product->nama_produk = $request->nama_produk;
             $product->save();
             return redirect()->route('products')->with('success', 'Berhasil Mengupdate Barang');
-
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -121,8 +122,6 @@ class ProductsController extends Controller
             if ($product->gambar) {
                 Storage::delete(['images/' . $product->gambar]);
             }
-            ;
-
             $product->delete();
 
             return redirect()->route('products')->with('success', 'Berhasil Menghapus Barang');
